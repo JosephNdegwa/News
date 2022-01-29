@@ -11,9 +11,9 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    popularity_headline = get_headlines('popularity')
+    popularity_headlines = get_headlines('popularity')
     title = 'Welcome to Your News Page'
-    return render_template('index.html', title = title, popularity = popularity_headline)
+    return render_template('index.html', title = title, popularity = popularity_headlines)
 
 
 @app.route('/headline/<int:headline_id>')
