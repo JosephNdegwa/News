@@ -1,6 +1,6 @@
-class Article:
+class Headline:
     '''
-    Article class to define Article Objects
+    Headline class to define Headline Objects
     '''
 
     def __init__(self,id,name,author,tittle,description,image,publishedAt):

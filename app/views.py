@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .requests import get_articles
+from .requests import get_headlines
 
 
 
@@ -11,15 +11,15 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
-    popularity_article = get_articles('popularity')
+    popularity_headline = get_headlines('popularity')
     title = 'Welcome to Your News Page'
-    return render_template('index.html', title = title, popularity = popularity_article)
+    return render_template('index.html', title = title, popularity = popularity_headline)
 
 
-@app.route('/article/<int:article_id>')
-def article(article_id):
+@app.route('/headline/<int:headline_id>')
+def headline(headline_id):
 
     '''
-    View article page function that returns the article details page and its data
+    View headline page function that returns the headline details page and its data
     '''
-    return render_template('article.html',id = article_id)
+    return render_template('headline.html',id = headline_id)

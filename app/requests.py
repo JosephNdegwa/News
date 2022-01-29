@@ -1,63 +1,63 @@
 from app import app
 import urllib.request,json
-from .models import  article
+from .models import  headline
 
-Article = article.Article
+Headline = headline.Headline
 
 # Getting api key
-api_key = app.config['ARTICLE_API_KEY']
+api_key = app.config['HEADLINE_API_KEY']
 
-# Getting the article base url
-base_url = app.config["ARTICLE_API_BASE_URL"]
+# Getting the headline base url
+base_url = app.config["HEADLINE_API_BASE_URL"]
 
 
 
-def get_articles(category):
+def get_headlines(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_articles_url = base_url.format(category,api_key)
+    get_headlines_url = base_url.format(category,api_key)
 
-    with urllib.request.urlopen(get_articles_url) as url:
-        get_articles_data = url.read()
-        get_articles_response = json.loads(get_articles_data)
+    with urllib.request.urlopen(get_headlines_url) as url:
+        get_headlines_data = url.read()
+        get_headlines_response = json.loads(get_headlines_data)
 
-        article_results = None
+        headline_articles = None
 
-        if get_articles_response['results']:
-            article_results_list = get_articles_response['results']
-            article_results = process_results(article_results_list)
-
-
-    return article_results
+        if get_headlines_response['articles']:
+            headline_articles_list = get_headlines_response['articles']
+            headline_articles = process_articles(headline_articles_list)
 
 
+    return headline_articles
 
-def process_results(article_list):
+
+
+def process_articles(headline_list):
     '''
-    Function that processes the article result and transform them to a list of objects
+    Function that processes the headline articles and transform them to a list of objects
     
     Args:
-        article_list: A list of dictionaries that contain movie details
+        headline_list: A list of dictionaries that contain movie details
 
     Returns:
-        article_results: A list of article objects
+        headline_articles: A list of headline objects
     '''
-    article_results = []
-    for article_item in article_list:
-        id = article_item.get('id')
-        name = article_item.get('name')
-        author = article_item.get('author')
-        title = article_item.get('title')
-        description = article_item.get('description')
-        image = article_item.get('urlToImage')
-        publishedAt = article_item.get('publishedAt')
+    headline_articles = []
+    for headline_item in headline_list:
+        id = headline_item.get('id')
+        name = headline_item.get('name')
+        author = headline_item.get('author')
+        title = headline_item.get('title')
+        description = headline_item.get('description')
+        image = headline_item.get('urlToImage')
+        publishedAt = headline_item.get('publishedAt')
 
         if image:
-            article_object = Article(id,name,author,title,description,image,publishedAt)
-            article_results.append(article_object)
+            headline_object = Headline(id,name,author,title,description,image,publishedAt)
+            headline_articles.append(headline_object)
 
 
-    return article_results
+    return headline_articles
 
     
