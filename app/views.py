@@ -1,5 +1,6 @@
 from flask import render_template
 from app import app
+from .requests import get_articles
 
 
 
@@ -10,8 +11,9 @@ def index():
     '''
     View root page function that returns the index page and its data
     '''
+    popularity_article = get_articles('popularity')
     title = 'Welcome to Your News Page'
-    return render_template('index.html', title = title)
+    return render_template('index.html', title = title, popularity = popularity_article)
 
 
 @app.route('/article/<int:article_id>')

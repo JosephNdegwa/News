@@ -12,5 +12,13 @@
 </head>
 <body>
     
+<!-- Popular articles section  -->
+<h3> Popular Articles</h3>
+<ul>
+   {% for popularity_article in popularity %}
+       <li>{{ popularity_article.title}}</li>
+   {% endfor %}
+</ul>
+
 </body>
 </html>

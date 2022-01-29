@@ -30,3 +30,34 @@ def get_articles(category):
 
 
     return article_results
+
+
+
+def process_results(article_list):
+    '''
+    Function that processes the article result and transform them to a list of objects
+    
+    Args:
+        article_list: A list of dictionaries that contain movie details
+
+    Returns:
+        article_results: A list of article objects
+    '''
+    article_results = []
+    for article_item in article_list:
+        id = article_item.get('id')
+        name = article_item.get('name')
+        author = article_item.get('author')
+        title = article_item.get('title')
+        description = article_item.get('description')
+        image = article_item.get('urlToImage')
+        publishedAt = article_item.get('publishedAt')
+
+        if image:
+            article_object = Article(id,name,author,title,description,image,publishedAt)
+            article_results.append(article_object)
+
+
+    return article_results
+
+    
