@@ -12,13 +12,37 @@
 </head>
 <body>
     
-<!-- Popular articles section  -->
-<h3> Popular Headlines</h3>
-<ul>
-   {% for popularity_headline in popularity %}
-       <li>{{ popularity_headline.title}}</li>
-   {% endfor %}
-</ul>
+        <!-- Popular headlines section  -->
+        <h3> Popular Headlines</h3>
+        <ul>
+            {% for popularity_headline in popularity %}
+                <li>{{ popularity_headline.title}}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Business headlines  -->
+        <h3> Business Headlines </h3>
+         <ul>
+            {% for business_headline in business %}
+                <li>{{ business_headline.title}}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Technology headlines  -->
+        <h3> Technology Headlines </h3>
+         <ul>
+            {% for technology_headline in technology %}
+                <li>{{ technology_headline.title}}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Sports headlines  -->
+        <h3> Sports Headlines </h3>
+         <ul>
+            {% for sports_headline in sports %}
+                <li>{{ sports_headline.title}}</li>
+            {% endfor %}
+        </ul>
 
 </body>
 </html>
