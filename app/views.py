@@ -1,6 +1,6 @@
 from flask import render_template
 from app import app
-from .requests import get_headlines
+from .requests import get_headlines,get_headline
 
 
 
@@ -25,4 +25,8 @@ def headline(headline_id):
     '''
     View headline page function that returns the headline details page and its data
     '''
-    return render_template('headline.html',id = headline_id)
+    headline = get_headline(id)
+    title = f'{headline.title}'
+
+
+    return render_template('headline.html', title = title, headline = headline)

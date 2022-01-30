@@ -1,7 +1,13 @@
 {% macro displayHeadlineList(headline_list) %}
-
     {% for headline in headline_list %}
-        <li>{{ headline.title}}</li>
+        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 image-card">
+            <img src="{{ headline.image }}" alt="{{ headline.title }} image" class="img-responsive">
+            <li class="text-center">
+                <a href="/headline/{{headline.id}}">
+                    {{ headline.title|truncate(10)}}</a>
+            </li>
+        </div>
+
     {% endfor %}
 
 {% endmacro %}

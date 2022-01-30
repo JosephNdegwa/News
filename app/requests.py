@@ -61,4 +61,26 @@ def process_articles(headline_list):
 
     return headline_articles
 
+
+def get_headline(id):
+    get_headline_details_url = base_url.format(id,api_key)
+
+    with urllib.request.urlopen(get_headline_details_url) as url:
+        headline_deatails_data = url.read()
+        headline_deatails_response = json.loads(headline_deatails_data)
+
+        headline_object = None
+        if headline_deatails_response:
+            id = headline_deatails_response.get('id')
+            name = headline_deatails_response.get('name')
+            author = headline_deatails_response.get('author')
+            title = headline_deatails_response.get('title')
+            description = headline_deatails_response.get('description')
+            image = headline_deatails_response.get('urlToImage')
+            publishedAt = headline_deatails_response.get('publishedAt')
+
+            headline_object = Headline(id,name,author,title,description,image,publishedAt)
+
+    return headline_object
+
     
