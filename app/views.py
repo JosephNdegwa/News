@@ -1,3 +1,5 @@
+from importlib.resources import contents
+from os import name
 from flask import render_template
 from app import app
 from .requests import get_headlines,get_headline
@@ -19,13 +21,13 @@ def index():
     return render_template('index.html', title = title, popularity = popularity_headlines, business = business_headlines, technology = technology_headlines, sports = sports_headlines)
 
 
-@app.route('/headline/<int:headline_id>')
-def headline(headline_id):
+@app.route('/headline/headline_url')
+def headline(headline_name):
 
     '''
     View headline page function that returns the headline details page and its data
     '''
-    headline = get_headline(id)
+    headline = get_headline(name)
     title = f'{headline.title}'
 
 

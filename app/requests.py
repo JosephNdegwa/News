@@ -1,7 +1,9 @@
 from distutils.command.config import config
+from importlib.resources import contents
 from app import app
 import urllib.request,json
 from .models import  headline
+
 
 Headline = headline.Headline
 
@@ -46,7 +48,7 @@ def process_articles(headline_list):
     '''
     headline_articles = []
     for headline_item in headline_list:
-        id = headline_item.get('id')
+
         name = headline_item.get('name')
         author = headline_item.get('author')
         title = headline_item.get('title')
@@ -55,14 +57,14 @@ def process_articles(headline_list):
         publishedAt = headline_item.get('publishedAt')
 
         if image:
-            headline_object = Headline(id,name,author,title,description,image,publishedAt)
+            headline_object = Headline(name,author,title,description,image,publishedAt)
             headline_articles.append(headline_object)
 
 
     return headline_articles
 
 
-def get_headline(id):
+def get_headline(name):
     get_headline_details_url = base_url.format(id,api_key)
 
     with urllib.request.urlopen(get_headline_details_url) as url:
@@ -70,8 +72,7 @@ def get_headline(id):
         headline_deatails_response = json.loads(headline_deatails_data)
 
         headline_object = None
-        if headline_deatails_response:
-            id = headline_deatails_response.get('id')
+        if headline_deatails_response: 
             name = headline_deatails_response.get('name')
             author = headline_deatails_response.get('author')
             title = headline_deatails_response.get('title')
@@ -79,7 +80,7 @@ def get_headline(id):
             image = headline_deatails_response.get('urlToImage')
             publishedAt = headline_deatails_response.get('publishedAt')
 
-            headline_object = Headline(id,name,author,title,description,image,publishedAt)
+            headline_object = Headline(name,author,title,description,image,publishedAt)
 
     return headline_object
 
