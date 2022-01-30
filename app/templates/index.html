@@ -25,12 +25,15 @@
 
     <!-- Content block -->
     {% block content %}
-
+        <div class="container">
+        
         <!-- Popular headline -->
         <h3> Popular Headlines</h3>
-        <ul>
+        <div class="row">
             {{ macro.displayHeadlineList(popularity)}}
-        </ul><br>
+        
+        </div>
+        </div>
        
 
         {% endblock%}

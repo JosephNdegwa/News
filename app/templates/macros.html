@@ -1,7 +1,8 @@
 {% macro displayHeadlineList(headline_list) %}
     {% for headline in headline_list %}
     
-    <div class="card" style="width: 18rem;">
+    <div class="container">
+    <div class="card" style=" width: 40rem;">
         <img class="card-img-top" src="{{ headline.urlToImage }}" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{headline.title}}</h5>
@@ -9,15 +10,21 @@
         </div>
         <ul class="list-group list-group-flush">
           
-          <li class="list-group-item">{{ headline.author}}</li>
+          <li class="list-group-item">Writen by: {{ headline.author}}</li>
+          <li class="list-group-item">{{ headline.content|truncate(200)}}</li>
           <li class="list-group-item">Published on: {{ headline.publishedAt }}</li>
-        </ul>
+          <li class="list-group-item">
         <div class="card-body">
-          <a href="{{headline.url}}">Read full story</a>
+          <a href="{{headline.url}}">Full story here</a>
           
-        </div>
+        </div><br>
+          </li>
+        </ul>
       </div>
-   
+    </div>
+
+    
+    
 
         
 

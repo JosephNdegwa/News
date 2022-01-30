@@ -53,14 +53,14 @@ def process_articles(headline_list):
         name = headline_item.get('name')
         author = headline_item.get('author')
         title = headline_item.get('title')
-        description = headline_item.get('description')
+        content = headline_item.get('content')
         urlToImage = headline_item.get('urlToImage')
         publishedAt = headline_item.get('publishedAt')
         url = headline_item.get('url')
         
 
         if urlToImage:
-            headline_object = Headline(name,author,title,description,urlToImage,publishedAt,url)
+            headline_object = Headline(name,author,title,content,urlToImage,publishedAt,url)
             headline_articles.append(headline_object)
 
 
@@ -81,13 +81,13 @@ def get_headline(source):
             name = headline_deatails_response.get('name')
             author = headline_deatails_response.get('author')
             title = headline_deatails_response.get('title')
-            description = headline_deatails_response.get('description')
+            content = headline_deatails_response.get('content')
             urlToImage = headline_deatails_response.get('urlToImage')
             publishedAt = headline_deatails_response.get('publishedAt')
             url = headline_deatails_response.get('url')
             
 
-            headline_object = Headline(name,author,title,description,urlToImage,publishedAt,url)
+            headline_object = Headline(name,author,title,content,urlToImage,publishedAt,url)
 
     return headline_object
 
