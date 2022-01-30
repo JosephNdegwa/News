@@ -19,7 +19,8 @@ def get_headlines(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_headlines_url = base_url.format(category,api_key)
+    get_headlines_url = base_url.format("articles",api_key)
+    print(get_headlines_url)
 
     with urllib.request.urlopen(get_headlines_url) as url:
         get_headlines_data = url.read()
@@ -53,34 +54,40 @@ def process_articles(headline_list):
         author = headline_item.get('author')
         title = headline_item.get('title')
         description = headline_item.get('description')
-        image = headline_item.get('urlToImage')
+        urlToImage = headline_item.get('urlToImage')
         publishedAt = headline_item.get('publishedAt')
+        url = headline_item.get('url')
+        
 
-        if image:
-            headline_object = Headline(name,author,title,description,image,publishedAt)
+        if urlToImage:
+            headline_object = Headline(name,author,title,description,urlToImage,publishedAt,url)
             headline_articles.append(headline_object)
 
 
     return headline_articles
 
 
-def get_headline(name):
-    get_headline_details_url = base_url.format(id,api_key)
+def get_headline(source):
+    get_headline_details_url = base_url.format("everything",api_key) +"sources="+ source
+    print(get_headline_details_url)
 
     with urllib.request.urlopen(get_headline_details_url) as url:
         headline_deatails_data = url.read()
         headline_deatails_response = json.loads(headline_deatails_data)
 
         headline_object = None
-        if headline_deatails_response: 
+
+        if headline_deatails_response ['articles']: 
             name = headline_deatails_response.get('name')
             author = headline_deatails_response.get('author')
             title = headline_deatails_response.get('title')
             description = headline_deatails_response.get('description')
-            image = headline_deatails_response.get('urlToImage')
+            urlToImage = headline_deatails_response.get('urlToImage')
             publishedAt = headline_deatails_response.get('publishedAt')
+            url = headline_deatails_response.get('url')
+            
 
-            headline_object = Headline(name,author,title,description,image,publishedAt)
+            headline_object = Headline(name,author,title,description,urlToImage,publishedAt,url)
 
     return headline_object
 

@@ -1,13 +1,27 @@
 {% macro displayHeadlineList(headline_list) %}
     {% for headline in headline_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 image-card">
-            <img src="{{ headline.image }}" alt="{{ headline.title }} image" class="img-responsive">
-            <li class="text-center">
-                <a href="/headline/{{headline.id}}">
-                    {{ headline.title|truncate(10)}}</a>
-            </li>
+    
+    <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="{{ headline.urlToImage }}" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{headline.title}}</h5>
+          
         </div>
+        <ul class="list-group list-group-flush">
+          
+          <li class="list-group-item">{{ headline.author}}</li>
+          <li class="list-group-item">Published on: {{ headline.publishedAt }}</li>
+        </ul>
+        <div class="card-body">
+          <a href="{{headline.url}}">Read full story</a>
+          
+        </div>
+      </div>
+   
+
+        
 
     {% endfor %}
+    
 
 {% endmacro %}
