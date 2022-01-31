@@ -1,13 +1,12 @@
-from importlib.resources import contents
-from os import name
+
 from flask import render_template
-from app import app
-from .requests import get_headlines,get_headline
+from . import main
+from ..requests import get_headlines,get_headline
 
 
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -19,13 +18,13 @@ def index():
     return render_template('index.html', title = title, popularity = popularity_headlines)
 
 
-@app.route('/headline/headline_url')
+@main.route('/headline/headline_url')
 def headline(headline_name):
 
     '''
     View headline page function that returns the headline details page and its data
     '''
-    headline = get_headline(name)
+    headline = get_headline(headline_name)
     title = f'{headline.title}'
 
 

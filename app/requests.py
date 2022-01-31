@@ -1,17 +1,17 @@
-from distutils.command.config import config
-from importlib.resources import contents
-from app import app
 import urllib.request,json
-from .models import  headline
+from .models import  Headline
 
-
-Headline = headline.Headline
 
 # Getting api key
-api_key = app.config['HEADLINE_API_KEY']
+api_key = None
 
 # Getting the headline base url
-base_url = app.config["HEADLINE_API_BASE_URL"]
+base_url = None
+
+def configure_request(app):
+    global api_key,base_url
+    api_key = app.config['HEADLINE_API_KEY']
+    base_url = app.config['HEADLINE_API_BASE_URL']
 
 
 

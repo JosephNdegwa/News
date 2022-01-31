@@ -1,4 +1,3 @@
-from importlib.resources import contents
 from urllib.request import urlopen
 
 
