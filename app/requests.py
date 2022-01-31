@@ -51,7 +51,6 @@ def process_articles(headline_list):
     for headline_item in headline_list:
 
         name = headline_item.get('name')
-        author = headline_item.get('author')
         title = headline_item.get('title')
         content = headline_item.get('content')
         urlToImage = headline_item.get('urlToImage')
@@ -60,14 +59,14 @@ def process_articles(headline_list):
         
 
         if urlToImage:
-            headline_object = Headline(name,author,title,content,urlToImage,publishedAt,url)
+            headline_object = Headline(name,title,content,urlToImage,publishedAt,url)
             headline_articles.append(headline_object)
 
 
     return headline_articles
 
 
-def get_headline(source):
+def get_headline(name):
     get_headline_details_url = base_url.format("everything",api_key) +"sources="+ source
     print(get_headline_details_url)
 
@@ -79,7 +78,6 @@ def get_headline(source):
 
         if headline_deatails_response ['articles']: 
             name = headline_deatails_response.get('name')
-            author = headline_deatails_response.get('author')
             title = headline_deatails_response.get('title')
             content = headline_deatails_response.get('content')
             urlToImage = headline_deatails_response.get('urlToImage')
@@ -87,7 +85,7 @@ def get_headline(source):
             url = headline_deatails_response.get('url')
             
 
-            headline_object = Headline(name,author,title,content,urlToImage,publishedAt,url)
+            headline_object = Headline(name,title,content,urlToImage,publishedAt,url)
 
     return headline_object
 
