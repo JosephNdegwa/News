@@ -1,5 +1,5 @@
 import urllib.request,json
-from .models import  Headline
+from .models import  Headline, Headline_source
 
 
 # Getting api key
@@ -78,12 +78,10 @@ def get_headline(newsroom):
 
         if headline_deatails_response ['articles']: 
             name = headline_deatails_response.get('name')
-            title = headline_deatails_response.get('title')
-            urlToImage = headline_deatails_response.get('urlToImage')
-            url = headline_deatails_response.get('url')
+            
             
 
-            headline_object = Headline(name,title,urlToImage,url)
+            headline_object = Headline_source(name)
 
     return headline_object
 

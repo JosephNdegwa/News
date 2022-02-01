@@ -22,13 +22,17 @@
         {% endif %}
 </head>
 <body>
+    
 
     <!-- Content block -->
     {% block content %}
         <div class="container">
+            <div class="news_button">
+            <a href="https://edition.cnn.com/" class="btn btn-warning btn-lg">CNN</a> <a href="https://www.bbc.com/" class="btn btn-warning btn-lg">BBC</a> <a href="https://www.foxnews.com/" class="btn btn-warning btn-lg">Fox News</a> <a href="https://news.sky.com/" class="btn btn-warning btn-lg">Sky Sports</a>
+            </div>
         <div class="heading">
         <!-- Popular headline -->
-        <h3> Popular Headlines</h3>
+        <h3> Trending News Headlines</h3>
         </div>
             
             {{ macro.displayHeadlineList(popularity)}}

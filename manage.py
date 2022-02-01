@@ -5,9 +5,9 @@ from app import create_app
 app = create_app('development')
 
 # Creating app instance
-app = create_app('development')
-manager = (app)
+
+
 #manager.add_command('server',Server)
 
 if __name__ == '__main__':
-    manager.run()
+    app.run()
