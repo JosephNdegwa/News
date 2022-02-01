@@ -6,17 +6,17 @@ This is a news highlights application that users can use to read news bulletins 
 Joseph Ndegwa
 
 ## Setup and installation
-Navigate to 
+Navigate to `https://ndegwa-news.herokuapp.com/` and serve on the web
 
 ## Technologies
 * Python
 * Flask
-* Heroku
+* Heroku CLI
 * Visual Studio
 
 # To-do
-* Add web user interface 
-* link to a server
+* Add funtion to save favorite newsrooms
+* Add other pages so that users can navigate news locally
 
 # Contact information
 For further enqueries please contact
