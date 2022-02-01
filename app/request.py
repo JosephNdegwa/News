@@ -66,8 +66,8 @@ def process_articles(headline_list):
     return headline_articles
 
 
-def get_headline(name):
-    get_headline_details_url = base_url.format("everything",api_key) +"sources="+ source
+def get_headline(newsroom):
+    get_headline_details_url = base_url.format("politics",api_key)
     print(get_headline_details_url)
 
     with urllib.request.urlopen(get_headline_details_url) as url:
@@ -79,13 +79,11 @@ def get_headline(name):
         if headline_deatails_response ['articles']: 
             name = headline_deatails_response.get('name')
             title = headline_deatails_response.get('title')
-            content = headline_deatails_response.get('content')
             urlToImage = headline_deatails_response.get('urlToImage')
-            publishedAt = headline_deatails_response.get('publishedAt')
             url = headline_deatails_response.get('url')
             
 
-            headline_object = Headline(name,title,content,urlToImage,publishedAt,url)
+            headline_object = Headline(name,title,urlToImage,url)
 
     return headline_object
 

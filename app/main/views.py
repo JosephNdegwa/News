@@ -1,7 +1,7 @@
 
 from flask import render_template
 from . import main
-from ..requests import get_headlines,get_headline
+from ..request import get_headlines,get_headline
 
 
 
@@ -18,7 +18,7 @@ def index():
     return render_template('index.html', title = title, popularity = popularity_headlines)
 
 
-@main.route('/headline/headline_url')
+@main.route('/headline_url')
 def headline(headline_name):
 
     '''
